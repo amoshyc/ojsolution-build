@@ -34,7 +34,7 @@
   
     <link rel="top" title="amoshyc&#39;s 題解" href="../../index.html"/>
         <link rel="up" title="PTC 2015/12 第一場" href="index.html"/>
-        <link rel="next" title="6. TIOJ 建中 Online Judge" href="../../tioj/tioj.html"/>
+        <link rel="next" title="6. TIOJ 建中 / TNFSH OJ 南一中" href="../../other/other.html"/>
         <link rel="prev" title="A. Constrained 0-1 Knapsack Problem" href="pa.html"/> 
 
   
@@ -86,10 +86,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../poj/poj.html">3. POJ (PKU Online Judge)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../uva/uva.html">4. UVA (UVa Online Judge)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../ptc.html">5. PTC (PTC &amp; ITSA)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../contest3/index.html">ITSA 桂冠賽 2014</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../contest4/index.html">ITSA 桂冠賽 2015</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">PTC 2015/12 第一場</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="pa.html">A. Constrained 0-1 Knapsack Problem</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">C. Warehouse</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="">C. Warehouse</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">分析</a></li>
@@ -100,7 +101,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../tioj/tioj.html">6. TIOJ 建中 Online Judge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other/other.html">6. TIOJ 建中 / TNFSH OJ 南一中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../template/template.html">7. Template</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags.html">8. Tags</a></li>
 </ul>
@@ -125,7 +126,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -156,8 +157,8 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><code class="docutils literal"><span class="pre">tag_fast_pow</span></code></li>
-<li><code class="docutils literal"><span class="pre">tag_preprocess</span></code></li>
+<li><tt class="docutils literal"><span class="pre">tag_fast_pow</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tag_preprocess</span></tt></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -182,7 +183,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">1000</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">1000</span>
 <span class="n">Q</span> <span class="o">&lt;=</span> <span class="mi">50</span>
 <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">K</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">8</span>
 </pre></div>
@@ -195,21 +196,21 @@
 <p class="last">倍增法</p>
 </div>
 <p>使用類似倍增法建出下列陣列，再搭配快速冪:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>int next[i][x, y] = 從 x, y 出發，走 2^i 步後到哪裡。
+<div class="highlight-python"><div class="highlight"><pre><span></span>int next[i][x, y] = 從 x, y 出發，走 2^i 步後到哪裡。
 </pre></div>
 </div>
 <p>利用:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">next</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="nb">next</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span> <span class="nb">next</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">next</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="nb">next</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span> <span class="nb">next</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="p">]</span>
 </pre></div>
 </div>
 <p>可在 O(MAX_LOG_K * N * N) 建出數列。</p>
 <p>之後就是用快速冪，即利用:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">步後</span> <span class="p">(</span><span class="nb">next</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
-<span class="mi">2</span> <span class="n">步後</span> <span class="p">(</span><span class="nb">next</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
-<span class="mi">4</span> <span class="n">步後</span> <span class="p">(</span><span class="nb">next</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
-<span class="mi">8</span> <span class="n">步後</span> <span class="p">(</span><span class="nb">next</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
-<span class="mi">16</span> <span class="n">步後</span> <span class="p">(</span><span class="nb">next</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
-<span class="o">...</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>1 步後 (next[0][x, y])
+2 步後 (next[1][x, y])
+4 步後 (next[2][x, y])
+8 步後 (next[3][x, y])
+16 步後 (next[4][x, y])
+...
 </pre></div>
 </div>
 <p>組出 K 步後在哪裡，每次詢問 O(lg(k))。</p>
@@ -400,7 +401,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../tioj/tioj.html" class="btn btn-neutral float-right" title="6. TIOJ 建中 Online Judge" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../other/other.html" class="btn btn-neutral float-right" title="6. TIOJ 建中 / TNFSH OJ 南一中" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="pa.html" class="btn btn-neutral" title="A. Constrained 0-1 Knapsack Problem" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -443,7 +444,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -85,7 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../cf/cf.html">2. CF (Codeforces)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="poj.html">3. POJ (PKU Online Judge)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="p3045.html">[POJ] 3045. Cow Acrobats</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">[POJ] 3233. Matrix Power Series</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="">[POJ] 3233. Matrix Power Series</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">分析</a></li>
@@ -98,7 +98,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../uva/uva.html">4. UVA (UVa Online Judge)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ptc/ptc.html">5. PTC (PTC &amp; ITSA)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tioj/tioj.html">6. TIOJ 建中 Online Judge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other/other.html">6. TIOJ 建中 / TNFSH OJ 南一中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../template/template.html">7. Template</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tags.html">8. Tags</a></li>
 </ul>
@@ -123,7 +123,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -152,7 +152,7 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><code class="docutils literal"><span class="pre">tag_fast_pow</span></code></li>
+<li><tt class="docutils literal"><span class="pre">tag_fast_pow</span></tt></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -174,7 +174,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">30</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">30</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">K</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">9</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">M</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span>
 <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">32768</span>
@@ -205,7 +205,7 @@
 \[\begin{split}\begin{bmatrix} { S }_{ k } \\ { A }^{ k+1 } \end{bmatrix}\quad =\quad \begin{bmatrix} I &amp; I \\ 0 &amp; A \end{bmatrix}\begin{bmatrix} { S }_{ k-1 } \\ { A }^{ k } \end{bmatrix}\end{split}\]</div>
 <p>即：</p>
 <div class="math">
-\[ \begin{align}\begin{aligned}\begin{split}\begin{bmatrix} { S }_{ k } \\ { A }^{ k+1 } \end{bmatrix}\quad =\quad { \begin{bmatrix} I &amp; I \\ 0 &amp; A \end{bmatrix} }^{ k-1 }\begin{bmatrix} { S }_{ 1 } \\ { A }^{ 2 } \end{bmatrix}\end{split}\\\begin{split}\begin{bmatrix} { S }_{ k } \\ { A }^{ k+1 } \end{bmatrix}\quad ={ \quad \begin{bmatrix} I &amp; I \\ 0 &amp; A \end{bmatrix} }^{ k }\begin{bmatrix} 0 \\ { A } \end{bmatrix}\end{split}\end{aligned}\end{align} \]</div>
+\[\begin{split}\begin{bmatrix} { S }_{ k } \\ { A }^{ k+1 } \end{bmatrix}\quad =\quad { \begin{bmatrix} I &amp; I \\ 0 &amp; A \end{bmatrix} }^{ k-1 }\begin{bmatrix} { S }_{ 1 } \\ { A }^{ 2 } \end{bmatrix}\end{split}\]\[\begin{split}\begin{bmatrix} { S }_{ k } \\ { A }^{ k+1 } \end{bmatrix}\quad ={ \quad \begin{bmatrix} I &amp; I \\ 0 &amp; A \end{bmatrix} }^{ k }\begin{bmatrix} 0 \\ { A } \end{bmatrix}\end{split}\]</div>
 <p>我們使用最後一個式子，使用矩陣快速冪即可求出答案。時間為 O(N^3 * lg(K))</p>
 </div>
 <div class="section" id="ac-code">
@@ -394,7 +394,7 @@
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
