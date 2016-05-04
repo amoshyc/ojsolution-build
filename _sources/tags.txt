@@ -44,9 +44,11 @@ String
 ************************
 Graph
 ************************
+
 - tag_dfs
 - tag_bfs
 - tag_dijkstra
+- tag_bellman
 - tag_floyd_warshall
 - tag_spfa
 - tag_mst
@@ -55,6 +57,7 @@ Graph
 - tag_prim
 - tag_dag
 - tag_tarjan_scc
+- tag_min_cost_flow
 
 ************************
 Other
