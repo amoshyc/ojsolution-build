@@ -4,6 +4,21 @@
     background-color: #e3e3e3;
 }
 
+@font-face {
+    font-family: 'ASCII';
+    unicode-range: U+00-33FFh;
+    src: 'Oxygen Mono';
+}
+
+@font-face {
+    font-family: 'Noto Sans TC';
+    unicode-range: U+2E80-33FFh;
+    src: url('http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff2') format('woff2'),
+        url('http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff') format('woff'),
+        url('http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.otf') format('opentype');
+}
+
+
 /*********************************************************
     https://github.com/snide/sphinx_rtd_theme/issues/117
     The order of the included files is avtually not that important,
@@ -33,5 +48,5 @@ html body div[class^='highlight'] pre {
 
 p {
     font-size: 15px;
-    font-family: "Oxygen Mono","Droid Sans Mono","Liberation Mono",Consolas,"Lucida Console","DejaVu Sans Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
+    font-family: 'ASCII', 'Noto Sans TC', "Oxygen Mono","Droid Sans Mono","Liberation Mono",Consolas,"Lucida Console","DejaVu Sans Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
 }

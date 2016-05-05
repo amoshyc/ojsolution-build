@@ -34,7 +34,7 @@
   
     <link rel="top" title="amoshyc&#39;s 題解" href="../../index.html"/>
         <link rel="up" title="Graph" href="index.html"/>
-        <link rel="next" title="Min Cost Flow" href="min_cost_flow.html"/>
+        <link rel="next" title="Max Flow" href="max_flow.html"/>
         <link rel="prev" title="Kruskal’s Algorithm" href="kruskal.html"/> 
 
   
@@ -86,17 +86,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../poj/poj.html">3. POJ (PKU Online Judge)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../uva/uva.html">4. UVA (UVa Online Judge)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ptc/ptc.html">5. PTC (PTC &amp; ITSA)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../other/other.html">6. TIOJ 建中 / TNFSH OJ 南一中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../other/other.html">6. Other</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../template.html">7. Template</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../ds/index.html">Data Structure</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Graph</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="index.html#id1">最短路徑</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#id2">最小生成樹</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html#id3">網路流</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">二分匹配</a></li>
-<li class="toctree-l4"><a class="reference internal" href="min_cost_flow.html">Min Cost Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bellman_ford.html">Bellman Ford</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dijkstra.html">Dijkstra&#8217;s Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spfa.html">SPFA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kruskal.html">Kruskal&#8217;s Algorithm</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">二分匹配</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">程式碼</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">模板驗證</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="max_flow.html">Max Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="min_cost_flow.html">Min Cost Flow</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../dp/index.html">DP</a></li>
@@ -272,7 +276,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="min_cost_flow.html" class="btn btn-neutral float-right" title="Min Cost Flow" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="max_flow.html" class="btn btn-neutral float-right" title="Max Flow" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="kruskal.html" class="btn btn-neutral" title="Kruskal’s Algorithm" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
