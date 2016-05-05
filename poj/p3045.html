@@ -84,7 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorials.html">1. 常用演算法教學</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cf/cf.html">2. CF (Codeforces)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="poj.html">3. POJ (PKU Online Judge)</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">[POJ] 3045. Cow Acrobats</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">[POJ] 3045. Cow Acrobats</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">分析</a><ul>
@@ -126,7 +126,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -155,7 +155,7 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><tt class="docutils literal"><span class="pre">tag_sorting</span></tt></li>
+<li><code class="docutils literal"><span class="pre">tag_sorting</span></code></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -179,7 +179,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id9">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">50000</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">50000</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">9</span>
 </pre></div>
@@ -191,7 +191,7 @@
 <p class="first admonition-title">Note</p>
 <p class="last">排序</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>依照 s + w 來排序，值越大的牛排在越前面，這個順序保證擁有最小的最大風險
+<div class="highlight-default"><div class="highlight"><pre><span></span>依照 s + w 來排序，值越大的牛排在越前面，這個順序保證擁有最小的最大風險
 </pre></div>
 </div>
 <p>但為什麼是 s + w 呢？而不是 s / w, w / s, s - w, etc</p>
@@ -200,113 +200,113 @@
 <div class="section" id="id5">
 <h4>反證法<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>假設:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">Cow1</span> <span class="n">Cow2</span> <span class="o">...</span> <span class="p">(</span><span class="n">s1</span> <span class="o">+</span> <span class="n">w1</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="o">+</span> <span class="n">w2</span><span class="p">)</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">Cow1</span> <span class="n">Cow2</span> <span class="o">...</span> <span class="p">(</span><span class="n">s1</span> <span class="o">+</span> <span class="n">w1</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="o">+</span> <span class="n">w2</span><span class="p">)</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>為最佳解，則:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Let W = 那兩隻牛後面所有牛的重量總和
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Let</span> <span class="n">W</span> <span class="o">=</span> <span class="n">那兩隻牛後面所有牛的重量總和</span>
 
-risk1 = w2 + W - s1
-risk2 = W - s2
+<span class="n">risk1</span> <span class="o">=</span> <span class="n">w2</span> <span class="o">+</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s1</span>
+<span class="n">risk2</span> <span class="o">=</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s2</span>
 </pre></div>
 </div>
 <p>我們可以交換 Cow1, Cow2:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">Cow2</span> <span class="n">Cow1</span> <span class="o">...</span> <span class="p">(</span><span class="n">s1</span> <span class="o">+</span> <span class="n">w1</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="o">+</span> <span class="n">w2</span><span class="p">)</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">Cow2</span> <span class="n">Cow1</span> <span class="o">...</span> <span class="p">(</span><span class="n">s1</span> <span class="o">+</span> <span class="n">w1</span> <span class="o">&lt;</span> <span class="n">s2</span> <span class="o">+</span> <span class="n">w2</span><span class="p">)</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>可得:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>risk1&#39; = W - s1
-risk2&#39; = w1 + W - s2
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">risk1</span><span class="s1">&#39; = W - s1</span>
+<span class="n">risk2</span><span class="s1">&#39; = w1 + W - s2</span>
 </pre></div>
 </div>
 <hr class="docutils" />
-<p>比較 <tt class="docutils literal"><span class="pre">(2)</span></tt> 與 <tt class="docutils literal"><span class="pre">(1)</span></tt> 的最大風險值，即:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>max(risk1&#39;, risk2&#39;)
+<p>比較 <code class="docutils literal"><span class="pre">(2)</span></code> 與 <code class="docutils literal"><span class="pre">(1)</span></code> 的最大風險值，即:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">risk1</span><span class="s1">&#39;, risk2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>與:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">risk1</span><span class="p">,</span> <span class="n">risk2</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">risk1</span><span class="p">,</span> <span class="n">risk2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>展開式子:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">W</span> <span class="o">-</span> <span class="n">s1</span><span class="p">,</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s2</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">W</span> <span class="o">-</span> <span class="n">s1</span><span class="p">,</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>與:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">w2</span> <span class="o">+</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s1</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s2</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">w2</span> <span class="o">+</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s1</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>同 <cite>- W + s1 + s2</cite>，相對的大小不變，得:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">s1</span><span class="p">)</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">s1</span><span class="p">)</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>與:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">w2</span> <span class="o">+</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s1</span><span class="p">)</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">w2</span> <span class="o">+</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s1</span><span class="p">)</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>若 <tt class="docutils literal"><span class="pre">(3)</span></tt> = s2， <tt class="docutils literal"><span class="pre">(4)</span></tt> 中的 w2 + s2 必 &gt; s2，所以 <tt class="docutils literal"><span class="pre">(3)</span> <span class="pre">&lt;</span> <span class="pre">(4)</span></tt>；</p>
-<p>若 <tt class="docutils literal"><span class="pre">(3)</span></tt> = w2 + s2，由 <tt class="docutils literal"><span class="pre">(2)</span></tt> 可知 s1 + w1 &lt; s2 + w2，所以 <tt class="docutils literal"><span class="pre">(3)</span> <span class="pre">&lt;</span> <span class="pre">(4)</span></tt>。</p>
+<p>若 <code class="docutils literal"><span class="pre">(3)</span></code> = s2， <code class="docutils literal"><span class="pre">(4)</span></code> 中的 w2 + s2 必 &gt; s2，所以 <code class="docutils literal"><span class="pre">(3)</span> <span class="pre">&lt;</span> <span class="pre">(4)</span></code>；</p>
+<p>若 <code class="docutils literal"><span class="pre">(3)</span></code> = w2 + s2，由 <code class="docutils literal"><span class="pre">(2)</span></code> 可知 s1 + w1 &lt; s2 + w2，所以 <code class="docutils literal"><span class="pre">(3)</span> <span class="pre">&lt;</span> <span class="pre">(4)</span></code>。</p>
 <p>所以我們得到結論:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>也就是說:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>max(risk1&#39;, risk2&#39;) &lt; max(risk1, risk2)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">risk1</span><span class="s1">&#39;, risk2&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">risk1</span><span class="p">,</span> <span class="n">risk2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>這代表 <tt class="docutils literal"><span class="pre">(2)</span></tt> 是一個比 <tt class="docutils literal"><span class="pre">(1)</span></tt> 好的順序，因 <tt class="docutils literal"><span class="pre">(2)</span></tt> 的最大風險值比 <tt class="docutils literal"><span class="pre">(1)</span></tt> 的最大風險值小，
+<p>這代表 <code class="docutils literal"><span class="pre">(2)</span></code> 是一個比 <code class="docutils literal"><span class="pre">(1)</span></code> 好的順序，因 <code class="docutils literal"><span class="pre">(2)</span></code> 的最大風險值比 <code class="docutils literal"><span class="pre">(1)</span></code> 的最大風險值小，
 所以假設不成立，我們也由此知</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>最佳解中任相鄰二隻牛必有性質 `s1 + w1 &gt;= s2 + w2`
+<div class="highlight-default"><div class="highlight"><pre><span></span>最佳解中任相鄰二隻牛必有性質 `s1 + w1 &gt;= s2 + w2`
 </pre></div>
 </div>
 </div>
 <div class="section" id="id6">
 <h4>一般證法<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <p>設最佳解:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">Cow1</span> <span class="n">Cow2</span> <span class="o">...</span>     <span class="o">-----</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">Cow1</span> <span class="n">Cow2</span> <span class="o">...</span>     <span class="o">-----</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>其中:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Let W = 那兩隻牛後面所有牛的重量總和
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Let</span> <span class="n">W</span> <span class="o">=</span> <span class="n">那兩隻牛後面所有牛的重量總和</span>
 
-risk1 = w2 + W - s1
-risk2 = W - s2
+<span class="n">risk1</span> <span class="o">=</span> <span class="n">w2</span> <span class="o">+</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s1</span>
+<span class="n">risk2</span> <span class="o">=</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s2</span>
 </pre></div>
 </div>
 <p>交換 Cow1, Cow2:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">Cow2</span> <span class="n">Cow1</span> <span class="o">...</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">Cow2</span> <span class="n">Cow1</span> <span class="o">...</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>則:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>risk1&#39; = W - s1
-risk2&#39; = w1 + W - s2
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">risk1</span><span class="s1">&#39; = W - s1</span>
+<span class="n">risk2</span><span class="s1">&#39; = w1 + W - s2</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">(1)</span></tt> 是最佳解:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span> -&gt; (1) 比 (2) 有較小的最大風險
-&lt;-&gt; max(risk1, risk2) &lt;= max(risk1&#39;, risk2&#39;)
-&lt;-&gt; max(w2 + W - s1, W - s2) &lt;= max(W - s1, w1 + W - s2)
+<p><code class="docutils literal"><span class="pre">(1)</span></code> 是最佳解:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">-&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">比</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">有較小的最大風險</span>
+<span class="o">&lt;-&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">risk1</span><span class="p">,</span> <span class="n">risk2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">risk1</span><span class="s1">&#39;, risk2&#39;</span><span class="p">)</span>
+<span class="o">&lt;-&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">w2</span> <span class="o">+</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s1</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">W</span> <span class="o">-</span> <span class="n">s1</span><span class="p">,</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">W</span> <span class="o">-</span> <span class="n">s2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>同 - W + s1 + s2，相對的大小不變，得:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>(續)
-&lt;-&gt; max(w2 + s2, s1)    ----- (3)
-    &lt;= max(s2, w1 + s1)    ----- (4)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">續</span><span class="p">)</span>
+<span class="o">&lt;-&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">w2</span> <span class="o">+</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s1</span><span class="p">)</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">s1</span><span class="p">)</span>    <span class="o">-----</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>若 <tt class="docutils literal"><span class="pre">(3)</span></tt> =  s1，因 <tt class="docutils literal"><span class="pre">(4)</span></tt> 中的 w1 + s1 必 &gt; s1，所以不等式必成立</p>
-<p>若 <tt class="docutils literal"><span class="pre">(3)</span></tt> =  w2 + s2，因 w2 + sw 必 &gt; <tt class="docutils literal"><span class="pre">(4)</span></tt> 中的 s2，所以不等式成立於:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">w2</span> <span class="o">+</span> <span class="n">s2</span> <span class="o">&lt;=</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">s1</span>
+<p>若 <code class="docutils literal"><span class="pre">(3)</span></code> =  s1，因 <code class="docutils literal"><span class="pre">(4)</span></code> 中的 w1 + s1 必 &gt; s1，所以不等式必成立</p>
+<p>若 <code class="docutils literal"><span class="pre">(3)</span></code> =  w2 + s2，因 w2 + sw 必 &gt; <code class="docutils literal"><span class="pre">(4)</span></code> 中的 s2，所以不等式成立於:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2</span> <span class="o">+</span> <span class="n">s2</span> <span class="o">&lt;=</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">s1</span>
 </pre></div>
 </div>
 <p>於是我們得到結論:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>(續)
-&lt;-&gt; w2 + s2 &lt;= w1 + s1
-&lt;-&gt; w1 + s1 &gt;= s2 + s2
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">續</span><span class="p">)</span>
+<span class="o">&lt;-&gt;</span> <span class="n">w2</span> <span class="o">+</span> <span class="n">s2</span> <span class="o">&lt;=</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">s1</span>
+<span class="o">&lt;-&gt;</span> <span class="n">w1</span> <span class="o">+</span> <span class="n">s1</span> <span class="o">&gt;=</span> <span class="n">s2</span> <span class="o">+</span> <span class="n">s2</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">(1)</span></tt> 是最佳解</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>iff 在序列中，任相鄰的兩隻牛都使 `(3) &lt;= (4)` 成立，即 `w1 + s1 &gt;= s2 + s2`
+<p><code class="docutils literal"><span class="pre">(1)</span></code> 是最佳解</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>iff 在序列中，任相鄰的兩隻牛都使 `(3) &lt;= (4)` 成立，即 `w1 + s1 &gt;= s2 + s2`
 </pre></div>
 </div>
 <p>得證。</p>
@@ -469,7 +469,7 @@ risk2&#39; = w1 + W - s2
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

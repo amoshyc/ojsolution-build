@@ -93,7 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pc.html">C. Unique elements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pd.html">D. Polynomials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pe.html">E. Coin Change</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="">F. Cutting Sticks</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">F. Cutting Sticks</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">分析</a></li>
@@ -133,7 +133,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -164,7 +164,7 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><tt class="docutils literal"><span class="pre">tag_easy</span></tt></li>
+<li><code class="docutils literal"><span class="pre">tag_easy</span></code></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -187,7 +187,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">100</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">100</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">K</span> <span class="o">&lt;</span> <span class="n">N</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">...</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">N</span>
 </pre></div>
@@ -200,22 +200,22 @@
 <p class="last">經典 dp</p>
 </div>
 <p>太經典了，就不多說了，直接給式子:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>dp[i][j] = 使編號在 (i, j) 這個開區間中的所有切點都被切的最小成本
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">使編號在</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="n">這個開區間中的所有切點都被切的最小成本</span>
 </pre></div>
 </div>
 <p>考慮下一次要切哪個切點，不知道，每個都試試看，看誰的成本最小:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>dp[i][j] = min([
-    dp[i][c] + dp[c][j] + (p[j] - p[i]) for i &lt; c &lt; j
-])
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">j</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 <p>初使條件:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>不易用 bottom-up 的寫法來實作，就用 top-down 吧。</p>
 <p>另外實作時，為了方便，會在:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">pos</span><span class="p">[</span><span class="n">K</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">N</span>
 </pre></div>
 </div>
@@ -374,7 +374,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
