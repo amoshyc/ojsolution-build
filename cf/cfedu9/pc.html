@@ -84,7 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">1. 常用演算法教學</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../cf.html">2. CF (Codeforces)</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Eduactional Round #9</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">[cfedu9] C. The Smallest String Concatenation</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="">[cfedu9] C. The Smallest String Concatenation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">分析</a></li>
@@ -127,7 +127,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -158,8 +158,8 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><code class="docutils literal"><span class="pre">tag_sorting</span></code></li>
-<li><code class="docutils literal"><span class="pre">tag_greedy</span></code></li>
+<li><tt class="docutils literal"><span class="pre">tag_sorting</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tag_greedy</span></tt></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -180,7 +180,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id7">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">50000</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">50000</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">50</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">&lt;=</span> <span class="mi">50000</span>
 </pre></div>
@@ -194,34 +194,34 @@
 </div>
 <p>直覺地可以想到，那就字典順序越小的字串就在越前面就好啦，但會發現這個策略在第二筆範測會出錯。
 於是修改後，另一個策略是當字串 a 是字串 b 的前綴時，b 在前面，但仍存在測資使之出錯：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jibw</span><span class="p">,</span> <span class="n">ji</span><span class="p">,</span> <span class="n">jp</span><span class="p">,</span> <span class="n">bw</span><span class="p">,</span> <span class="n">jizw</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">jibw</span><span class="p">,</span> <span class="n">ji</span><span class="p">,</span> <span class="n">jp</span><span class="p">,</span> <span class="n">bw</span><span class="p">,</span> <span class="n">jizw</span>
 </pre></div>
 </div>
 <p>正確答案:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bw</span><span class="p">,</span> <span class="n">jibw</span><span class="p">,</span> <span class="n">ji</span><span class="p">,</span> <span class="n">jizw</span><span class="p">,</span> <span class="n">jp</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bw</span><span class="p">,</span> <span class="n">jibw</span><span class="p">,</span> <span class="n">ji</span><span class="p">,</span> <span class="n">jizw</span><span class="p">,</span> <span class="n">jp</span>
 </pre></div>
 </div>
 <p>策略二的輸出:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bw</span><span class="p">,</span> <span class="n">jibw</span><span class="p">,</span> <span class="n">jizw</span><span class="p">,</span> <span class="n">ji</span><span class="p">,</span> <span class="n">jp</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bw</span><span class="p">,</span> <span class="n">jibw</span><span class="p">,</span> <span class="n">jizw</span><span class="p">,</span> <span class="n">ji</span><span class="p">,</span> <span class="n">jp</span>
 </pre></div>
 </div>
 <p>那策略到底會什麼呢？答案是:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>當比較字串 a 與字串 b 時，如果 a.b &lt; b.a 則 a 在前。
+<div class="highlight-python"><div class="highlight"><pre><span></span>當比較字串 a 與字串 b 時，如果 a.b &lt; b.a 則 a 在前。
 </pre></div>
 </div>
 <p>這樣為什麼正確呢，可以用反證法 <a class="footnote-reference" href="#f1" id="id4">[1]</a>。</p>
 <hr class="docutils" />
 <p>若存在某個字串陣列:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="o">...</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">...</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="o">...</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>則我們可以交換 s[k], s[k+1]:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="o">...</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">...</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="o">...</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>這個字串的字典順序在會在前一個字串之前（或起碼相同，至少不會更差），顯而易見的。</p>
 <p>我們也可以這麼想:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>排序時，現在相鄰的兩個字串 a, b，我不知道誰該在前面，誰在後面。
+<div class="highlight-python"><div class="highlight"><pre><span></span>排序時，現在相鄰的兩個字串 a, b，我不知道誰該在前面，誰在後面。
 那我就兩種方法都試試看，看哪一種方法的字典順序較小就用哪一種。
 所以就是比較 a.b 與 b.a 誰的字典順序較小。
 </pre></div>
@@ -336,7 +336,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
