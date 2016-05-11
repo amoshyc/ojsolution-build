@@ -35,7 +35,7 @@
     <link rel="top" title="amoshyc&#39;s 題解" href="../../index.html"/>
         <link rel="up" title="7. Template" href="../template.html"/>
         <link rel="next" title="0/1 背包問題" href="knapsack_01.html"/>
-        <link rel="prev" title="Min Cost Flow" href="../graph/min_cost_flow.html"/> 
+        <link rel="prev" title="LCA" href="../tree/lca.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -90,16 +90,22 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../template.html">7. Template</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../ds/index.html">Data Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../graph/index.html">Graph</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">DP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tree/index.html">Tree</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">DP</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="knapsack_01.html">0/1 背包問題</a></li>
+<li class="toctree-l3"><a class="reference internal" href="knapsack_bounded.html">多重背包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="knapsack_unbounded.html">完全背包問題</a></li>
+<li class="toctree-l3"><a class="reference internal" href="knapsack_bounded_bool.html">多重背包可行性</a></li>
 <li class="toctree-l3"><a class="reference internal" href="coin_change.html">Coin Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cutting_sticks.html">Cutting Sticks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lis.html">LIS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tsp.html">TSP</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../number/index.html">Number</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../string/index.html">String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search/index.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/index.html">Other</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags.html">8. Tags</a></li>
@@ -125,7 +131,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -152,10 +158,13 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="knapsack_01.html">0/1 背包問題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knapsack_bounded.html">多重背包</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knapsack_unbounded.html">完全背包問題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knapsack_bounded_bool.html">多重背包可行性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coin_change.html">Coin Change</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cutting_sticks.html">Cutting Sticks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lis.html">LIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tsp.html">TSP</a></li>
 </ul>
 </div>
 </div>
@@ -170,7 +179,7 @@
         <a href="knapsack_01.html" class="btn btn-neutral float-right" title="0/1 背包問題" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../graph/min_cost_flow.html" class="btn btn-neutral" title="Min Cost Flow" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../tree/lca.html" class="btn btn-neutral" title="LCA" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -180,7 +189,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on May 07, 2016.
+      Last updated on May 11, 2016.
 
     </p>
   </div>
@@ -211,7 +220,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

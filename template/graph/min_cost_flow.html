@@ -34,7 +34,7 @@
   
     <link rel="top" title="amoshyc&#39;s 題解" href="../../index.html"/>
         <link rel="up" title="Graph" href="index.html"/>
-        <link rel="next" title="DP" href="../dp/index.html"/>
+        <link rel="next" title="Tree" href="../tree/index.html"/>
         <link rel="prev" title="Max Flow" href="max_flow.html"/> 
 
   
@@ -96,16 +96,19 @@
 <li class="toctree-l3"><a class="reference internal" href="kruskal.html">Kruskal&#8217;s Algorithm</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bipartite_matching.html">二分匹配</a></li>
 <li class="toctree-l3"><a class="reference internal" href="max_flow.html">Max Flow</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Min Cost Flow</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="">Min Cost Flow</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">程式碼</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">模板驗證</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../tree/index.html">Tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dp/index.html">DP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../number/index.html">Number</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../string/index.html">String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search/index.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/index.html">Other</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags.html">8. Tags</a></li>
@@ -131,7 +134,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -160,8 +163,8 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><code class="docutils literal"><span class="pre">tag_min_cost_flow</span></code></li>
-<li><code class="docutils literal"><span class="pre">tag_template</span></code></li>
+<li><tt class="docutils literal"><span class="pre">tag_min_cost_flow</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tag_template</span></tt></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -248,32 +251,47 @@
 70
 71
 72
-73</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define st first</span>
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define st first</span>
 <span class="cp">#define nd second</span>
 
-<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">pii</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">INF</span> <span class="o">=</span> <span class="mh">0x3f3f3f3f</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">pii</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">double</span> <span class="n">INF</span> <span class="o">=</span> <span class="mf">1e10</span><span class="p">;</span>
 
 <span class="k">struct</span> <span class="n">Edge</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">to</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">rev</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">to</span><span class="p">,</span> <span class="n">cap</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">cost</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">rev</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_V</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_V</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">V</span><span class="p">;</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span> <span class="n">g</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
-<span class="kt">int</span> <span class="n">h</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
-<span class="kt">int</span> <span class="n">d</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">double</span> <span class="n">h</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="kt">double</span> <span class="n">d</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
 <span class="kt">int</span> <span class="n">prevv</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
 <span class="kt">int</span> <span class="n">preve</span><span class="p">[</span><span class="n">MAX_V</span><span class="p">];</span>
+<span class="c1">// int match[MAX_V];</span>
 
-<span class="kt">void</span> <span class="nf">add_edge</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cap</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cost</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="nf">add_edge</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cap</span><span class="p">,</span> <span class="kt">double</span> <span class="n">cost</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">g</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">push_back</span><span class="p">((</span><span class="n">Edge</span><span class="p">){</span><span class="n">v</span><span class="p">,</span> <span class="n">cap</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">()});</span>
     <span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">push_back</span><span class="p">((</span><span class="n">Edge</span><span class="p">){</span><span class="n">u</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">cost</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">g</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">});</span>
 <span class="p">}</span>
 
-<span class="kt">int</span> <span class="nf">min_cost_flow</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">double</span> <span class="nf">min_cost_flow</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="n">fill</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="n">V</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">fill</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">match</span> <span class="o">+</span> <span class="n">V</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">f</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// dijkstra 找最小成本增廣路徑</span>
         <span class="c1">// without h will reduce to SPFA = O(V*E)</span>
@@ -310,6 +328,13 @@
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span> <span class="n">v</span> <span class="o">!=</span> <span class="n">s</span><span class="p">;</span> <span class="n">v</span> <span class="o">=</span> <span class="n">prevv</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
             <span class="n">bn</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">bn</span><span class="p">,</span> <span class="n">g</span><span class="p">[</span><span class="n">prevv</span><span class="p">[</span><span class="n">v</span><span class="p">]][</span><span class="n">preve</span><span class="p">[</span><span class="n">v</span><span class="p">]].</span><span class="n">cap</span><span class="p">);</span>
 
+        <span class="c1">// // find match</span>
+        <span class="c1">// for (int v = prevv[t]; v != s; v = prevv[prevv[v]]) {</span>
+        <span class="c1">//     int u = prevv[v];</span>
+        <span class="c1">//     match[v] = u;</span>
+        <span class="c1">//     match[u] = v;</span>
+        <span class="c1">// }</span>
+
         <span class="c1">// 更新剩餘圖</span>
         <span class="n">f</span> <span class="o">-=</span> <span class="n">bn</span><span class="p">;</span>
         <span class="n">res</span> <span class="o">+=</span> <span class="n">bn</span> <span class="o">*</span> <span class="n">h</span><span class="p">[</span><span class="n">t</span><span class="p">];</span> <span class="c1">// SPFA: res += bn * d[t]</span>
@@ -330,6 +355,7 @@
 <div><ul class="simple">
 <li>[最小費用流] <a class="reference external" href="http://codepad.org/kGDEcbBW">poj2195</a></li>
 <li>[最大費用流] <a class="reference external" href="http://codepad.org/1NjG4RQS">poj3422</a></li>
+<li>[配對] <a class="reference external" href="http://codepad.org/OpFifd7f">poj 3565</a></li>
 </ul>
 </div></blockquote>
 </div>
@@ -342,7 +368,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../dp/index.html" class="btn btn-neutral float-right" title="DP" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../tree/index.html" class="btn btn-neutral float-right" title="Tree" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="max_flow.html" class="btn btn-neutral" title="Max Flow" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -355,7 +381,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on May 07, 2016.
+      Last updated on May 11, 2016.
 
     </p>
   </div>
@@ -386,7 +412,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -34,7 +34,7 @@
   
     <link rel="top" title="amoshyc&#39;s 題解" href="../../index.html"/>
         <link rel="up" title="DP" href="index.html"/>
-        <link rel="next" title="Number" href="../number/index.html"/>
+        <link rel="next" title="TSP" href="tsp.html"/>
         <link rel="prev" title="Cutting Sticks" href="cutting_sticks.html"/> 
 
   
@@ -90,21 +90,27 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../template.html">7. Template</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../ds/index.html">Data Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../graph/index.html">Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tree/index.html">Tree</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">DP</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="knapsack_01.html">0/1 背包問題</a></li>
+<li class="toctree-l3"><a class="reference internal" href="knapsack_bounded.html">多重背包</a></li>
 <li class="toctree-l3"><a class="reference internal" href="knapsack_unbounded.html">完全背包問題</a></li>
+<li class="toctree-l3"><a class="reference internal" href="knapsack_bounded_bool.html">多重背包可行性</a></li>
 <li class="toctree-l3"><a class="reference internal" href="coin_change.html">Coin Change</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cutting_sticks.html">Cutting Sticks</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">LIS</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="">LIS</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">程式碼 1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">程式碼 2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">模板驗證</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="tsp.html">TSP</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../number/index.html">Number</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../string/index.html">String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../search/index.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/index.html">Other</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags.html">8. Tags</a></li>
@@ -130,7 +136,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -159,8 +165,8 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><code class="docutils literal"><span class="pre">tag_dp</span></code></li>
-<li><code class="docutils literal"><span class="pre">tag_template</span></code></li>
+<li><tt class="docutils literal"><span class="pre">tag_dp</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tag_template</span></tt></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -231,7 +237,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../number/index.html" class="btn btn-neutral float-right" title="Number" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tsp.html" class="btn btn-neutral float-right" title="TSP" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="cutting_sticks.html" class="btn btn-neutral" title="Cutting Sticks" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -244,7 +250,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on May 07, 2016.
+      Last updated on May 11, 2016.
 
     </p>
   </div>
@@ -275,7 +281,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
