@@ -87,7 +87,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cfedu8/index.html">Educational Round #8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cfedu7/index.html">Educational Round #7</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Regular Round #343</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">[cf343] C. Famil Door and Brackets</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="">[cf343] C. Famil Door and Brackets</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">分析</a></li>
@@ -127,7 +127,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -156,8 +156,8 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><code class="docutils literal"><span class="pre">tag_dp</span></code></li>
-<li><code class="docutils literal"><span class="pre">tag_enumeration</span></code></li>
+<li><tt class="docutils literal"><span class="pre">tag_dp</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tag_enumeration</span></tt></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -181,7 +181,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">m</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">5</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">m</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">5</span>
 <span class="n">n</span> <span class="o">-</span> <span class="n">m</span> <span class="o">&lt;=</span> <span class="mi">2000</span>
 <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="s1">&#39;)&#39;</span><span class="p">]</span>
 </pre></div>
@@ -196,23 +196,23 @@
 <p>先定義一個字串 s 的平衡值為將該字串的左括號視為 +1，右括號視為 -1，整個字串的總和。
 我們將之寫作 b(s)。而所謂平衡的字串就是平衡值為 0 的字串</p>
 <p>存在 dp:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>dp[i][j] = 長度為 i，平衡值為 j 的字串有多少個 (j &gt;= 0)
+<div class="highlight-python"><div class="highlight"><pre><span></span>dp[i][j] = 長度為 i，平衡值為 j 的字串有多少個 (j &gt;= 0)
 dp[0][0] = 1，即空字串 &quot;&quot;
 </pre></div>
 </div>
 <p>考慮 dp[i][j] 的這些字串中最後一個字元，不是左括號就是右括號，所以:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j + 1]
+<div class="highlight-python"><div class="highlight"><pre><span></span>dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j + 1]
                 （左括號）          （右括號）
 </pre></div>
 </div>
 <p>加上邊際條件:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">j</span> <span class="ow">is</span> <span class="mi">0</span>
-<span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">j</span> <span class="ow">is</span> <span class="ow">not</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>dp[i][j] = dp[i - 1][j + 1] if j is 0
+dp[i][j] = dp[i - 1][j + 1] + dp[i - 1][j + 1] if j is not 0
 </pre></div>
 </div>
 <p>前面假設了 j &gt;= 0，即左括號比右括號多或等於的情況，那如果左括號比較少，即平衡值是負的的情況呢？
 答案是:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="p">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="n">k</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="p">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="n">k</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>將 dp[i][k] 的各個字串括號互換（左括號變右括號，右括號變左括號），即為 dp[i][-k] 的情況。</p>
@@ -220,12 +220,12 @@ dp[0][0] = 1，即空字串 &quot;&quot;
 <p>T = p + s + q，題目要求 len(T) = n， b(T) = 0， 且 b(T[0, i)) &gt;= 0。
 既然 len(T), len(s), b(T), b(s) 都是定值，我們可以只需枚舉 len(p), b(p)，
 每枚舉出一個 (len(p), b(p))，(len(q), b(q)) 即被確定下來。其中:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 <span class="n">b</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">=</span> <span class="n">b</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">b</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>這時答案就可以加上:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)][</span><span class="n">b</span><span class="p">(</span><span class="n">p</span><span class="p">)]</span> <span class="o">*</span> <span class="n">dp</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)][</span><span class="n">b</span><span class="p">(</span><span class="n">q</span><span class="p">)]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)][</span><span class="n">b</span><span class="p">(</span><span class="n">p</span><span class="p">)]</span> <span class="o">*</span> <span class="n">dp</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)][</span><span class="n">b</span><span class="p">(</span><span class="n">q</span><span class="p">)]</span>
 </pre></div>
 </div>
 <p>個。</p>
@@ -238,7 +238,7 @@ dp[0][0] = 1，即空字串 &quot;&quot;
 （此時存在 x, 字串 b(p) + s[0:x) 的平衡值 &lt; 0，即右括號多於左括號，這不合題意）
 （s[0, x) 就是發生 min_bs 的 s 的 prefix）</p>
 <p>另外還有一個不是答案的清況，當:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span>
 </pre></div>
 </div>
 <p>很明顯的，當這發生時，不存在平衡值為 -(b(p) + b(s)) 的字串 q，因為 len(q) 最大就是 n - m，
@@ -365,7 +365,7 @@ dp[0][0] = 1，即空字串 &quot;&quot;
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on May 12, 2016.
+      Last updated on May 13, 2016.
 
     </p>
   </div>
@@ -396,7 +396,7 @@ dp[0][0] = 1，即空字串 &quot;&quot;
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
