@@ -240,15 +240,9 @@
 <div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">ll</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">ll</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">*</span> <span class="n">K</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">ll</span><span class="p">(</span><span class="mf">1e9</span><span class="p">))</span>
-        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -283,7 +277,7 @@ N.   a[N] * K^N + a[N - 1] * K^(N-1) + ... + a[0] = P(K)
 abs( 式子 (N-1) ) &lt;= 10^4
 </pre></div>
 </div>
-<p>再重覆上述過程，移項，同除 K，可得:</p>
+<p>再重覆上述過程，移項（接下來是 a[1]），同除 K，可得:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>abs( 式子 (N-2) ) &lt;= 10^4 * 2
 abs( 式子 (N-3) ) &lt;= 10^4 * 3
 ...
