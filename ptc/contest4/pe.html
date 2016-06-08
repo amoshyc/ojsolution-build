@@ -92,7 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pb.html">B. 各位數和的排序</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pc.html">C. Unique elements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pd.html">D. Polynomials</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="">E. Coin Change</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">E. Coin Change</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">分析</a></li>
@@ -135,7 +135,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -164,7 +164,7 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><tt class="docutils literal"><span class="pre">tag_dp</span></tt></li>
+<li><code class="docutils literal"><span class="pre">tag_dp</span></code></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -187,7 +187,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">50</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">50</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">15000</span>
 </pre></div>
 </div>
@@ -200,41 +200,41 @@
 </div>
 <p>這題與完全背包類似，都是順序無關的 dp。</p>
 <p>讓我們從最簡單的出發，再慢慢優化:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>ll dp[i][j] = 使用前 i + 1 種硬幣，組出 j 元的方法數
+<div class="highlight-default"><div class="highlight"><pre><span></span>ll dp[i][j] = 使用前 i + 1 種硬幣，組出 j 元的方法數
 </pre></div>
 </div>
 <p>則有初使條件:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>dp[0][j] = 使用第 1 種硬幣（1 元）組出 j 元的方法數 = 1
+<div class="highlight-default"><div class="highlight"><pre><span></span>dp[0][j] = 使用第 1 種硬幣（1 元）組出 j 元的方法數 = 1
 </pre></div>
 </div>
 <p>考慮第 i 種硬幣要用幾個，則可以找到轉移方程式:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>dp[i][j] = sum( [
-    dp[i - 1][j - k * coins[i]] for 0 &lt;= k &lt;= (j // coins[i])
-])
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="p">[</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">j</span> <span class="o">//</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 <p>時間為 O(N * M * N)，空間為 O(N * M)，都有點大了，雖然說這題這樣寫就可以 AC，
 但還是讓我們優化一下。</p>
 <p>跟完全背包問題一樣，根據轉移方程式，將 dp[i][j - coins[i]] 展開:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>dp[i][j] = sum( [
-    dp[i - 1][j - coins[i] - k * coins[i]] for 0 &lt;= k &lt;= (j // coins[i])
-])
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="p">[</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">j</span> <span class="o">//</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 <p>即為:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>dp[i][j] = sum( [
-    dp[i - 1][j - k * coins[i]] for 1 &lt;= k &lt;= (j // coins[i])
-])
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="p">[</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">j</span> <span class="o">//</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 <p>相比於原來的轉移方程式，只差 k 的都始值，於是我們可以將轉移方程式改寫成:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>順利將時間壓掉一個維度。</p>
 <hr class="docutils" />
 <p>最後，如同完全背包問題，再加上重覆使用陣列的技巧，也可以將空間壓掉一個維度:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>最終的時間複雜度為 O(N * M), 空間 O(M)</p>
@@ -415,7 +415,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on May 29, 2016.
+      Last updated on May 18, 2016.
 
     </p>
   </div>
@@ -446,7 +446,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

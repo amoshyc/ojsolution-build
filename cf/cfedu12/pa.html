@@ -84,7 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/tutorials.html">1. 常用演算法教學</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../cf.html">2. CF (Codeforces)</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Eduactional Round #12</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="">[cfedu12] A. Buses Between Cities</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">[cfedu12] A. Buses Between Cities</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">分析</a></li>
@@ -99,8 +99,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../cfedu9/index.html">Eduactional Round #9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cfedu8/index.html">Educational Round #8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cfedu7/index.html">Educational Round #7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cf354/index.html">Regular Round #354</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cf353/index.html">Regular Round #353</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cf346/index.html">Regular Round #346</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cf343/index.html">Regular Round #343</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cf342/index.html">Regular Round #342</a></li>
@@ -134,7 +132,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -163,7 +161,7 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><tt class="docutils literal"><span class="pre">tag_implementation</span></tt></li>
+<li><code class="docutils literal"><span class="pre">tag_implementation</span></code></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -188,7 +186,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">fa</span><span class="p">,</span> <span class="n">ta</span> <span class="o">&lt;=</span> <span class="mi">120</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">fa</span><span class="p">,</span> <span class="n">ta</span> <span class="o">&lt;=</span> <span class="mi">120</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">fb</span><span class="p">,</span> <span class="n">tb</span> <span class="o">&lt;=</span> <span class="mi">120</span>
 </pre></div>
 </div>
@@ -201,9 +199,9 @@
 </div>
 <p>轉成以分鐘為單位後，枚舉從 B 往 A 的車次。</p>
 <p>如果許多區間的題目一樣，我們對區間結尾進行討論，有以下三種情況:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1. b_ed &lt; a_st
-2. b_ed in [a_st, a_ed)
-3. b_ed &gt;= a_ed
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">b_ed</span> <span class="o">&lt;</span> <span class="n">a_st</span>
+<span class="mf">2.</span> <span class="n">b_ed</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a_st</span><span class="p">,</span> <span class="n">a_ed</span><span class="p">)</span>
+<span class="mf">3.</span> <span class="n">b_ed</span> <span class="o">&gt;=</span> <span class="n">a_ed</span>
 </pre></div>
 </div>
 <p>稍為想一下，即可知各種情況中有哪些車次是算的。細節看 code。</p>
@@ -296,7 +294,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on May 29, 2016.
+      Last updated on May 19, 2016.
 
     </p>
   </div>
@@ -327,7 +325,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
