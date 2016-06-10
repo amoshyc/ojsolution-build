@@ -92,7 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pb.html">[cf354] B. Pyramid of Glasses</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pc.html">[cf354] C. Vasya and String</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pd.html">[cf354] D. Theseus and labyrinth</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">[cf354] E. The Last Fight Between Human and AI</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="">[cf354] E. The Last Fight Between Human and AI</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">分析</a></li>
@@ -135,7 +135,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -164,8 +164,8 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><code class="docutils literal"><span class="pre">tag_game</span></code></li>
-<li><code class="docutils literal"><span class="pre">tag_math</span></code></li>
+<li><tt class="docutils literal"><span class="pre">tag_game</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tag_math</span></tt></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -183,7 +183,7 @@
 <div class="section" id="id2">
 <h2><a class="reference external" href="http://codeforces.com/contest/676/problem/E">題目</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>有一個 degree 為 N 的多項式 P，係數為 a[] ，一開始所有係數都是未知的:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="n">N</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="n">N</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>人類與電腦輪流將未知的係數賦值，可以賦予任意值（有理數），遊戲一開始電腦先行。
@@ -193,7 +193,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1 &lt;= N &lt;= 10^5
+<div class="highlight-python"><div class="highlight"><pre><span></span>1 &lt;= N &lt;= 10^5
 0 &lt;= |K| &lt;= 10^4
 0 &lt;= a[i] &lt;= 10^4 if a[i] 是已經有值的。
 </pre></div>
@@ -206,7 +206,7 @@
 <p class="last">分段討論，誰最後賦值誰就贏了</p>
 </div>
 <p>有兩個引理必需意識到:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1. P 是 x - K 的倍式，若且唯若 P(K) = 0
+<div class="highlight-python"><div class="highlight"><pre><span></span>1. P 是 x - K 的倍式，若且唯若 P(K) = 0
 2. 在 K ≠ 0，有未知係數的情況下，誰最後賦值誰就贏了
 </pre></div>
 </div>
@@ -215,7 +215,7 @@
 那最後賦值的那個人，一定可以在最後未知的那項上賦予某個值，
 使目前多項式的值加上該項的值後，變為 0。</p>
 <p>我們可以將遊戲分為幾種狀態來討論:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1. K = 0
+<div class="highlight-python"><div class="highlight"><pre><span></span>1. K = 0
     此時 P 是否為零只跟 a[0] 有關了。（引理 1，把 0 代入 P 即可知）。
     a) 如果 a[0] 是已知的，那答案就看 a[0] 是否為 0。
     b) 如果 a[0] 是未知的，那現在輪到誰，誰就贏了，因為雙方都採最優策略。
@@ -228,7 +228,7 @@
 </pre></div>
 </div>
 <p>關於 (2a） 的計算，因為 P(K) 值太大了，用 double 存一定會有誤差，有二種解決方式:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1. 用 long long，計算時 mod 某個數 M。
+<div class="highlight-python"><div class="highlight"><pre><span></span>1. 用 long long，計算時 mod 某個數 M。
    因為 P(K) = 0 iff P(K) mod M = 0，
    如果 M 枚舉的夠多，則所有的 P(K) mod M 都為 0，可以大致保證 P(K) = 0
    （實作上，最好選一些大質數，但因為是 cf，選固定值很容易被 hacked，所以用隨機數較好）
@@ -236,7 +236,7 @@
 2. 用 long long，計算時只要值超出 1e9，那就是錯的
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">(2)</span></code> 是因為以下原因，計算多項式，我們通常是用 horner&#8217;s method 寫成</p>
+<p><tt class="docutils literal"><span class="pre">(2)</span></tt> 是因為以下原因，計算多項式，我們通常是用 horner&#8217;s method 寫成</p>
 <div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -247,53 +247,53 @@
 </pre></div>
 </td></tr></table></div>
 <p>過程中，s 的值是:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">0.</span>   <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span>
-<span class="mf">1.</span>   <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-<span class="mf">2.</span>   <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span>
-<span class="o">...</span>
-<span class="n">N</span><span class="o">-</span><span class="mf">1.</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">N</span><span class="o">.</span>   <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="n">N</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">P</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>0.   a[N]
+1.   a[N] * K + a[N - 1]
+2.   a[N] * K^2 + a[N - 1] * K + a[N - 2]
+...
+N-1. a[N] * K*(N-1) + a[N-1] * K^(N-2) + ... + a[1]
+N.   a[N] * K^N + a[N - 1] * K^(N-1) + ... + a[0] = P(K)
 </pre></div>
 </div>
-<p>若 <code class="docutils literal"><span class="pre">式子</span> <span class="pre">N</span></code> == 0，則:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="n">N</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<p>若 <tt class="docutils literal"><span class="pre">式子</span> <span class="pre">N</span></tt> == 0，則:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="n">N</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>因為題目有說:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span>
 </pre></div>
 </div>
 <p>所以可寫成不等式:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="n">N</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="n">N</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span>
 </pre></div>
 </div>
 <p>同除 abs(K):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span> <span class="n">K</span> <span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span> <span class="n">K</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>右式，最大為 K = 1 時（K 為整數，且在我們現在討論的這個遊戲狀態，K ≠ 0），所以:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span><span class="o">^</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span>
-<span class="n">即</span>
-<span class="nb">abs</span><span class="p">(</span> <span class="n">式子</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>abs( a[N] * K*(N-1) + a[N-1] * K^(N-2) + ... + a[1] ) &lt;= 10^4
+即
+abs( 式子 (N-1) ) &lt;= 10^4
 </pre></div>
 </div>
 <p>再重覆上述過程，移項（接下來是 a[1]），同除 K，可得:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span> <span class="n">式子</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="nb">abs</span><span class="p">(</span> <span class="n">式子</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span>
-<span class="o">...</span>
-<span class="nb">abs</span><span class="p">(</span> <span class="n">式子</span> <span class="mi">0</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">4</span> <span class="o">*</span> <span class="n">N</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>abs( 式子 (N-2) ) &lt;= 10^4 * 2
+abs( 式子 (N-3) ) &lt;= 10^4 * 3
+...
+abs( 式子 0 ) &lt;= 10^4 * N
 </pre></div>
 </div>
 <p>N 最大是 10^5，所以:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span> <span class="n">式子</span> <span class="mi">0</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">9</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>abs( 式子 0 ) &lt;= 10^9
 </pre></div>
 </div>
 <p>其它式子也有這個性質:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span> <span class="n">式子</span> <span class="n">i</span> <span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">9</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>abs( 式子 i ) &lt;= 10^9
 </pre></div>
 </div>
 <p>根據 (P -&gt; Q) ≡ (¬Q -&gt; ¬P)，所以:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>if abs( 式子 i ) &gt; 10^9
+<div class="highlight-python"><div class="highlight"><pre><span></span>if abs( 式子 i ) &gt; 10^9
 then (式子 N) ≠ 0
 </pre></div>
 </div>
@@ -458,7 +458,7 @@ then (式子 N) ≠ 0
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on Jun 08, 2016.
+      Last updated on May 29, 2016.
 
     </p>
   </div>
@@ -489,7 +489,7 @@ then (式子 N) ≠ 0
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

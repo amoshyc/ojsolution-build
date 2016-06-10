@@ -87,7 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pa.html">[cfedu12] A. Buses Between Cities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pb.html">[cfedu12] B. Shopping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pc.html">[cfedu12] C. Simple Strings</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">[cfedu12] D. Simple Subset</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="">[cfedu12] D. Simple Subset</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">分析</a></li>
@@ -99,6 +99,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../cfedu9/index.html">Eduactional Round #9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cfedu8/index.html">Educational Round #8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cfedu7/index.html">Educational Round #7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cf354/index.html">Regular Round #354</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cf353/index.html">Regular Round #353</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cf346/index.html">Regular Round #346</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cf343/index.html">Regular Round #343</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cf342/index.html">Regular Round #342</a></li>
@@ -132,7 +134,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -161,7 +163,7 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><code class="docutils literal"><span class="pre">tag_prime</span></code></li>
+<li><tt class="docutils literal"><span class="pre">tag_prime</span></tt></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -183,8 +185,8 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="o">|</span><span class="n">S</span><span class="o">|</span> <span class="o">&lt;=</span> <span class="mi">1000</span>
-<span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">6</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>1 &lt;= |S| &lt;= 1000
+1 &lt;= S[i] &lt;= 10^6
 </pre></div>
 </div>
 </div>
@@ -195,17 +197,17 @@
 <p class="last">奇偶</p>
 </div>
 <p>一個簡單的觀察，除 1 以外的數:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">二個偶數或二個奇數相加必不是質數</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>二個偶數或二個奇數相加必不是質數
 </pre></div>
 </div>
 <p>所以關於結果序列，可以得出以下幾個 case（序列由長到短）:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1. 一個以上的 1，一個偶數 e，e + 1 是質數
+<div class="highlight-python"><div class="highlight"><pre><span></span>1. 一個以上的 1，一個偶數 e，e + 1 是質數
 2. 二個以上的 1
 3. 一個奇數與一個偶數，其和是質數
 4. 一個數
 </pre></div>
 </div>
-<p>其中 <code class="docutils literal"><span class="pre">3</span></code> 是 O(N^2)</p>
+<p>其中 <tt class="docutils literal"><span class="pre">3</span></tt> 是 O(N^2)</p>
 <p>實作時先建質數表，即可在 O(1) 時間判斷是不是質數。</p>
 </div>
 <div class="section" id="ac-code">
@@ -402,7 +404,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on May 19, 2016.
+      Last updated on May 29, 2016.
 
     </p>
   </div>
@@ -433,7 +435,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

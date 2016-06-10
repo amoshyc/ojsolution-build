@@ -34,7 +34,7 @@
   
     <link rel="top" title="amoshyc&#39;s 題解" href="../../index.html"/>
         <link rel="up" title="CF Educational Round #7" href="index.html"/>
-        <link rel="next" title="CF #343" href="../cf343/index.html"/>
+        <link rel="next" title="CF #354" href="../cf354/index.html"/>
         <link rel="prev" title="[cfedu7] D. Optimal Number Permutation" href="pd.html"/> 
 
   
@@ -89,7 +89,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Educational Round #7</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="pc.html">[cfedu7] C. Not Equal on a Segment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pd.html">[cfedu7] D. Optimal Number Permutation</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">[cfedu7] E. Ants in Leaves</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="">[cfedu7] E. Ants in Leaves</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">分析</a></li>
@@ -98,6 +98,9 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../cf354/index.html">Regular Round #354</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cf353/index.html">Regular Round #353</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cf346/index.html">Regular Round #346</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cf343/index.html">Regular Round #343</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cf342/index.html">Regular Round #342</a></li>
 </ul>
@@ -130,7 +133,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -159,10 +162,10 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><code class="docutils literal"><span class="pre">tag_dp</span></code></li>
-<li><code class="docutils literal"><span class="pre">tag_greedy</span></code></li>
-<li><code class="docutils literal"><span class="pre">tag_sorting</span></code></li>
-<li><code class="docutils literal"><span class="pre">tag_dfs</span></code></li>
+<li><tt class="docutils literal"><span class="pre">tag_dp</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tag_greedy</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tag_sorting</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tag_dfs</span></tt></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -186,7 +189,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id7">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">500000</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">500000</span>
 </pre></div>
 </div>
 </div>
@@ -199,14 +202,14 @@
 <p>root 的性質與其它節點不同，嘗試先解決掉它。</p>
 <p>我們可以發現題目所要求的答案，就是各隻螞蟻到達 level 1 <a class="footnote-reference" href="#f1" id="id4">[1]</a> 的時間的最大值再加一。</p>
 <p>接下來，針到 level 1 的每一點 k，令:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">螞蟻</span> <span class="n">u</span> <span class="n">爬到</span> <span class="n">level</span> <span class="n">k</span> <span class="n">所需的時間</span>
-<span class="p">(</span><span class="n">u</span> <span class="n">在</span> <span class="n">k</span> <span class="n">的子樹中</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>dp[u] = 螞蟻 u 爬到 level k 所需的時間
+(u 在 k 的子樹中)
 </pre></div>
 </div>
 <p>可以找到狀態轉移方程式:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
-<span class="n">v</span> <span class="n">是</span> <span class="n">u</span> <span class="n">前一隻到達</span> <span class="n">k</span> <span class="n">的螞蟻</span>
-<span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="n">是</span> <span class="n">u</span> <span class="n">的深度</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>dp[u] = max(dp[v] + 1, depth[u])
+v 是 u 前一隻到達 k 的螞蟻
+depth[u] 是 u 的深度
 </pre></div>
 </div>
 <p>接下來問題就簡單啦，只是我們找到子樹中所有螞蟻到達 k 的順序，
@@ -214,7 +217,7 @@
 <p>而順序是什麼呢？答案來自於 Greedy，深度越深的螞蟻越晚到。
 仔細一下，也應該如此，因為如果較深的螞蟻較早到，他在路上一定會卡到其它螞蟻的。</p>
 <p>所以題目的答案即為</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">([</span><span class="n">子樹</span> <span class="n">x</span> <span class="n">的答案</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">level</span> <span class="mi">1</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>max([子樹 x 的答案 + 1 | x in level 1])
 </pre></div>
 </div>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
@@ -347,7 +350,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cf343/index.html" class="btn btn-neutral float-right" title="CF #343" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../cf354/index.html" class="btn btn-neutral float-right" title="CF #354" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="pd.html" class="btn btn-neutral" title="[cfedu7] D. Optimal Number Permutation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -360,7 +363,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on May 18, 2016.
+      Last updated on May 29, 2016.
 
     </p>
   </div>
@@ -391,7 +394,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
