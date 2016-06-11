@@ -93,7 +93,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../cf343/index.html">Regular Round #343</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Regular Round #342</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="pa.html">[cf342] A. Guest From the Past</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="">[cf342] B. War of the Corporations</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">[cf342] B. War of the Corporations</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id3">分析</a></li>
@@ -133,7 +133,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -162,8 +162,8 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><tt class="docutils literal"><span class="pre">tag_kmp</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">tag_constructive_algorithm</span></tt></li>
+<li><code class="docutils literal"><span class="pre">tag_kmp</span></code></li>
+<li><code class="docutils literal"><span class="pre">tag_constructive_algorithm</span></code></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -184,7 +184,7 @@
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">5</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">5</span>
 <span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">30</span>
 </pre></div>
 </div>
@@ -199,7 +199,7 @@
 將最後一個字元換成特殊符號，下次搜尋時，從 S[m + len(P)] 開始。</p>
 <p>以下給出用 KMP 的版本，雖然說這題用 O(len(S) * len(P)) 的原始方法也可以過。</p>
 <p>另外官方題解中有提到，python 有內建這個功能了:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>就會輸出 non-overlapping occurrence 了…</p>
@@ -310,7 +310,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on May 29, 2016.
+      Last updated on Jun 11, 2016.
 
     </p>
   </div>
@@ -341,7 +341,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

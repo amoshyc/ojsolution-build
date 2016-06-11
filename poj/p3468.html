@@ -35,7 +35,7 @@
     <link rel="top" title="amoshyc&#39;s 題解" href="../index.html"/>
         <link rel="up" title="3. POJ (PKU Online Judge)" href="poj.html"/>
         <link rel="next" title="[POJ] 3565. Ants" href="p3565.html"/>
-        <link rel="prev" title="[POJ] 3264. Balanced Lineup" href="p3264.html"/> 
+        <link rel="prev" title="[POJ] 3368. Frequent values" href="p3368.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -90,7 +90,8 @@
 <li class="toctree-l2"><a class="reference internal" href="p3258.html">[POJ] 3258. River Hopscotch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p3273.html">[POJ] 3273. Monthly Expense</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p3264.html">[POJ] 3264. Balanced Lineup</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">[POJ] 3468. A Simple Problem with Integers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="p3368.html">[POJ] 3368. Frequent values</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">[POJ] 3468. A Simple Problem with Integers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">分析</a></li>
@@ -128,7 +129,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -155,8 +156,8 @@
 <div class="sidebar">
 <p class="first sidebar-title">Tags</p>
 <ul class="last simple">
-<li><tt class="docutils literal"><span class="pre">tag_binary_search</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">tag_greedy</span></tt></li>
+<li><code class="docutils literal"><span class="pre">tag_binary_search</span></code></li>
+<li><code class="docutils literal"><span class="pre">tag_greedy</span></code></li>
 </ul>
 </div>
 <div class="contents topic" id="toc">
@@ -174,14 +175,14 @@
 <div class="section" id="id2">
 <h2><a class="reference external" href="http://poj.org/problem?id=3468">題目</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>給定 N 個整數，Q 筆操作，每筆操作為:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1. C a b c: 將 [a, b] 每個數都加 c
-2. Q a b: 輸出 [a, b] 的區間和
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">C</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">:</span> <span class="n">將</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="n">每個數都加</span> <span class="n">c</span>
+<span class="mf">2.</span> <span class="n">Q</span> <span class="n">a</span> <span class="n">b</span><span class="p">:</span> <span class="n">輸出</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="n">的區間和</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="specification">
 <h2><a class="toc-backref" href="#id6">Specification</a><a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">,</span> <span class="n">Q</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">5</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">,</span> <span class="n">Q</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">5</span>
 <span class="o">-</span><span class="mi">10</span><span class="o">^</span><span class="mi">5</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">5</span>
 <span class="o">-</span><span class="mi">10</span><span class="o">^</span><span class="mi">9</span> <span class="o">&lt;=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="o">^</span><span class="mi">9</span>
 </pre></div>
@@ -441,7 +442,7 @@
         <a href="p3565.html" class="btn btn-neutral float-right" title="[POJ] 3565. Ants" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="p3264.html" class="btn btn-neutral" title="[POJ] 3264. Balanced Lineup" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="p3368.html" class="btn btn-neutral" title="[POJ] 3368. Frequent values" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -482,7 +483,7 @@
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
