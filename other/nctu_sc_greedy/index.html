@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Data Structure &mdash; amoshyc&#39;s 題解</title>
+  <title>交大暑訓 2016 題單：Greedy &mdash; amoshyc&#39;s 題解</title>
   
 
   
@@ -33,9 +33,9 @@
 
   
     <link rel="top" title="amoshyc&#39;s 題解" href="../../index.html"/>
-        <link rel="up" title="7. Template" href="../template.html"/>
-        <link rel="next" title="Disjoint Set 並查集" href="dsu.html"/>
-        <link rel="prev" title="7. Template" href="../template.html"/> 
+        <link rel="up" title="6. Other" href="../other.html"/>
+        <link rel="next" title="[cf228] A. Fox and Number Game" href="pa.html"/>
+        <link rel="prev" title="[cf208] B. Maximum Absurdity" href="../nctu_sc_dp/pc.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -86,25 +86,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../poj/poj.html">3. POJ (PKU Online Judge)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../uva/uva.html">4. UVA (UVa Online Judge)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ptc/ptc.html">5. PTC (PTC &amp; ITSA)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../other/other.html">6. Other</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../template.html">7. Template</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="dsu.html">Disjoint Set 並查集</a></li>
-<li class="toctree-l3"><a class="reference internal" href="seg.html">Segment Tree</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sparse_table.html">Sparse Table</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bit.html">BIT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bit2d.html">BIT 2d</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../other.html">6. Other</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../toj12.html">[TOJ] 12. 遙控器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tioj1208.html">[TIOJ] 1208. 第 K 大連續和</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nctu_sc_enum/index.html">交大暑訓 2016 題單：Enum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nctu_sc_dp/index.html">交大暑訓 2016 題單：DP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">交大暑訓 2016 題單：Greedy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pa.html">[cf228] A. Fox and Number Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb.html">[cf252] B. Valera and Fruits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pc.html">[cf236] A. Nuts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pd.html">[cfother] A. Poster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pe.html">[cf131] B. Hometask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pf.html">[cfother] B. Replacing Digits</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../graph/index.html">Graph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tree/index.html">Tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dp/index.html">DP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../number/index.html">Number</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../string/index.html">String</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../search/index.html">Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other/index.html">Other</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../template/template.html">7. Template</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags.html">8. Tags</a></li>
 </ul>
 
@@ -136,9 +134,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../template.html">7. Template</a> &raquo;</li>
+          <li><a href="../other.html">6. Other</a> &raquo;</li>
       
-    <li>Data Structure</li>
+    <li>交大暑訓 2016 題單：Greedy</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -150,15 +148,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="data-structure">
-<h1>Data Structure<a class="headerlink" href="#data-structure" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="greedy">
+<h1>交大暑訓 2016 題單：Greedy<a class="headerlink" href="#greedy" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dsu.html">Disjoint Set 並查集</a></li>
-<li class="toctree-l1"><a class="reference internal" href="seg.html">Segment Tree</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sparse_table.html">Sparse Table</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bit.html">BIT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bit2d.html">BIT 2d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pa.html">[cf228] A. Fox and Number Game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pb.html">[cf252] B. Valera and Fruits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc.html">[cf236] A. Nuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pd.html">[cfother] A. Poster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pe.html">[cf131] B. Hometask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pf.html">[cfother] B. Replacing Digits</a></li>
 </ul>
 </div>
 </div>
@@ -170,10 +169,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dsu.html" class="btn btn-neutral float-right" title="Disjoint Set 並查集" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pa.html" class="btn btn-neutral float-right" title="[cf228] A. Fox and Number Game" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../template.html" class="btn btn-neutral" title="7. Template" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../nctu_sc_dp/pc.html" class="btn btn-neutral" title="[cf208] B. Maximum Absurdity" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
