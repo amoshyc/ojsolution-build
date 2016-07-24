@@ -1,11 +1,10 @@
 ###################################################
-快速冪
+兩圓關係判定
 ###################################################
 
 .. sidebar:: Tags
 
-    - ``tag_fast_pow``
-    - ``tag_matrix``
+    - ``tag_geometry``
     - ``tag_template``
 
 .. contents:: TOC
@@ -18,19 +17,20 @@
 .. code-block:: cpp
     :linenos:
 
-    ll fast_pow(ll a, ll b) {
-        ll ans = 1;
-        ll base = a;
-        while (b) {
-            if (b & 1) ans *= base;
-            base = base * base;
-            b >>= 1;
-        }
-        return ans;
-    }
+    // d = 圓心距, R, r 為半徑 (R >= r)
+    // 內切
+    d = R - r
+    // 外切
+    d = R + r
+    // 內離
+    d < R - r
+    // 外離
+    d > R + r
+    // 相交
+    d < R + r && d > R - r
 
 ************************
 模板驗證
 ************************
 
-`poj2739 <../../poj/p3233.html>`_
+待測
