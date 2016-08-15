@@ -28,6 +28,7 @@ Technique
 - tag_combination
 - mod_inverse
 - tag_min_vertex_cover
+- tag_pigeonhole
 
 ************************
 Data Structure
@@ -42,6 +43,7 @@ Data Structure
 - tag_deque
 - tag_map
 - tag_sparse_table
+- tag_trie
 
 ************************
 String
