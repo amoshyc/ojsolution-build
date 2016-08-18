@@ -207,19 +207,21 @@
 26
 27
 28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Dsu</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">par</span><span class="p">[</span><span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">];</span>
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Dsu</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">par</span><span class="p">;</span>
 
-    <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">memset</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">par</span><span class="p">));</span> <span class="c1">// par[i] = -rank[i] if i is root</span>
+    <span class="n">Dsu</span><span class="p">(){}</span>
+    <span class="n">Dsu</span><span class="p">(</span><span class="kt">int</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">par</span> <span class="o">=</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="kt">int</span> <span class="nf">root</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">root</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">a</span><span class="p">]));</span>
     <span class="p">}</span>
 
-    <span class="kt">void</span> <span class="nf">unite</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="n">unite</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
         <span class="n">b</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span> <span class="c1">// already in same set</span>
@@ -228,11 +230,11 @@
         <span class="n">par</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kt">bool</span> <span class="nf">same</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">same</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">root</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="n">root</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="kt">int</span> <span class="nf">size</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// correct if a is root</span>
+    <span class="kt">int</span> <span class="n">size</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// correct if a is root</span>
         <span class="k">return</span> <span class="o">-</span><span class="n">par</span><span class="p">[</span><span class="n">a</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">};</span>
@@ -265,7 +267,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on Aug 17, 2016.
+      Last updated on Aug 19, 2016.
 
     </p>
   </div>
