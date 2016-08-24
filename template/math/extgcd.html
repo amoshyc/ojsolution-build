@@ -95,6 +95,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Math</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="fast_pow.html">快速冪</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fast_pow_matrix.html">短陣快速冪</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fft.html">FFT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="build_primes.html">質數表</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Extgcd</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">程式碼</a></li>
@@ -111,6 +112,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tags.html">8. Tags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cheatsheet.html">9. Extgcd</a></li>
 </ul>
 
             
@@ -190,18 +192,20 @@
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// 求取讓 a*x + b*y = 1 的整數解 (x, y)</span>
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// 求取讓 a*x + b*y = gcd(a, b) 的整數解 (x, y)</span>
+<span class="c1">// 同時回傳 gcd(a, b)</span>
 <span class="kt">int</span> <span class="nf">extgcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">d</span> <span class="o">=</span> <span class="n">extgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
         <span class="n">y</span> <span class="o">-=</span> <span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">else</span> <span class="p">{</span>
         <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -232,7 +236,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on Aug 17, 2016.
+      Last updated on Aug 24, 2016.
 
     </p>
   </div>
