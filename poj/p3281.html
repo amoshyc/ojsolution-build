@@ -89,6 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="p1984.html">[POJ] 1984. Navigation Nightmare</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p1988.html">[POJ] 1988. Cube Stacking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p1990.html">[POJ] 1990. MooFest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2135.html">[POJ] 2135. Farm Tour</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p2349.html">[POJ] 2349. Arctic Network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p2441.html">[POJ] 2441. Arrange the Bulls</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p2686.html">[POJ] 2686. Traveling by Stagecoach</a></li>
@@ -114,6 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="p3368.html">[POJ] 3368. Frequent values</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p3420.html">[POJ] 3420. Quad Tiling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p3468.html">[POJ] 3468. A Simple Problem with Integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3469.html">[POJ] 3469. Dual Core CPU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p3565.html">[POJ] 3565. Ants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p3977.html">[POJ] 3977. Subset</a></li>
 </ul>
@@ -243,7 +245,7 @@
 <p>※ 所有邊的容量都是 1。</p>
 <img alt="http://i.imgur.com/hkRDu4q.png" src="http://i.imgur.com/hkRDu4q.png" />
 <p>這個網路的最大流即為答案。</p>
-<p>注意，牛 i -&gt; 牛 i 的那幾條邊是必要的，這些邊保證了每隻牛只會有一單位的流量。</p>
+<p>注意，牛 i -&gt; 牛 i 的那幾條邊是必要的，這些邊保證了每隻牛都只會有一單位的流量。</p>
 </div>
 <div class="section" id="ac-code">
 <h2><a class="toc-backref" href="#id8">AC Code</a><a class="headerlink" href="#ac-code" title="Permalink to this headline">¶</a></h2>
@@ -481,7 +483,7 @@
 
     <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="kt">int</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">());</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">const</span> <span class="n">Edge</span><span class="o">&amp;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">cap</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">level</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
                 <span class="n">level</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">]</span> <span class="o">=</span> <span class="n">level</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
@@ -493,7 +495,7 @@
 
 <span class="kt">int</span> <span class="n">DinicGraph</span><span class="o">::</span><span class="n">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="n">t</span><span class="p">)</span> <span class="k">return</span> <span class="n">f</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">iter</span><span class="p">[</span><span class="n">v</span><span class="p">];</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">iter</span><span class="p">[</span><span class="n">v</span><span class="p">];</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="kt">int</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">());</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">Edge</span><span class="o">&amp;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">cap</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">level</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">level</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">])</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">to</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">min</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">cap</span><span class="p">));</span>
@@ -545,7 +547,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on Aug 30, 2016.
+      Last updated on Sep 02, 2016.
 
     </p>
   </div>
