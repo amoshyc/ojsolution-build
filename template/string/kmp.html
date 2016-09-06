@@ -34,7 +34,7 @@
   
     <link rel="top" title="amoshyc&#39;s 題解" href="../../index.html"/>
         <link rel="up" title="String" href="index.html"/>
-        <link rel="next" title="Search" href="../search/index.html"/>
+        <link rel="next" title="AC Automaton" href="ac.html"/>
         <link rel="prev" title="String" href="index.html"/> 
 
   
@@ -99,6 +99,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id2">模板驗證</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="ac.html">AC Automaton</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../search/index.html">Search</a></li>
@@ -207,34 +208,78 @@
 30
 31
 32
-33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_Np</span> <span class="o">=</span> <span class="p">...;</span>
-<span class="kt">int</span> <span class="n">F</span><span class="p">[</span><span class="n">MAX_Np</span><span class="p">];</span>
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// F[i] = max len of prefix of P such that it is suffix of Pi</span>
+<span class="c1">// F[i] = the 0-based index to go to if mismath occur at (i + 1)</span>
+<span class="c1">//    0123456</span>
+<span class="c1">// P: ababaca</span>
+<span class="c1">//       ^ ^</span>
+<span class="c1">//       k i</span>
+<span class="c1">// F: 0012301</span>
+<span class="c1">// mismatch at i=5, k=3, we should move k to F[k - 1]</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">get_fail</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">P</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">P</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">F</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// F[0] = 0</span>
 
-<span class="kt">void</span> <span class="nf">fail_func</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">P</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">Np</span> <span class="o">=</span> <span class="n">P</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
-    <span class="n">memset</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">F</span><span class="p">));</span>
-    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">Np</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">P</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="n">j</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
-        <span class="n">i</span><span class="o">++</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">;</span>
-        <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 0-based index of 1st pointer</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 0-based index of 2nd pointer</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">!=</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="c1">// mismatch at k, i</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">k</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">F</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">int</span> <span class="nf">KMP</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">P</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//            i</span>
+<span class="c1">//            v</span>
+<span class="c1">//    0123456789ABCDE</span>
+<span class="c1">// S: bacbababaabcbab</span>
+<span class="c1">// P:    ababaca</span>
+<span class="c1">//       0123456</span>
+<span class="c1">//            ^</span>
+<span class="c1">//            q</span>
+<span class="c1">// F:    0012301</span>
+<span class="c1">// mismatch occurs at i=8, q=5, we should move q to F[q - 1]</span>
+
+<span class="kt">int</span> <span class="n">KMP</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">S</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">P</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">P</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">F</span> <span class="o">=</span> <span class="n">get_fail</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
+
     <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">Np</span> <span class="o">=</span> <span class="n">P</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">Ns</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
-
-    <span class="n">failure_function</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
-
-    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">Ns</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">P</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="n">j</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
-        <span class="n">i</span><span class="o">++</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">Np</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">q</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 0-based index on P</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 0-based index on S</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">q</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">P</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">!=</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="c1">// find transition P[q]</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">q</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">==</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="c1">// found</span>
+            <span class="n">q</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">q</span> <span class="o">==</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// match at (i - m + 1)</span>
             <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
-            <span class="n">j</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">q</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
@@ -242,44 +287,10 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<p>Code rewritten from CLRS:</p>
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">get_fail</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">F</span><span class="p">(</span><span class="n">len</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-
-    <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// candidate len</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">!=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            <span class="n">k</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span> <span class="c1">// since we&#39;re 0-based</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            <span class="n">k</span><span class="o">++</span><span class="p">;</span>
-        <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="n">F</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table></div>
 </div>
 <div class="section" id="id2">
 <h2><a class="toc-backref" href="#id5">模板驗證</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://codepad.org/faJWOZW4">poj3468</a></p>
+<p><a class="reference external" href="http://codepad.org/wCW8ycvu">poj3461</a></p>
 </div>
 </div>
 
@@ -290,7 +301,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../search/index.html" class="btn btn-neutral float-right" title="Search" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ac.html" class="btn btn-neutral float-right" title="AC Automaton" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="String" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -303,7 +314,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on Sep 05, 2016.
+      Last updated on Sep 07, 2016.
 
     </p>
   </div>
