@@ -302,15 +302,23 @@
 115
 116
 117
-118</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+118
+119
+120
+121</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
-<span class="c1">// remember srand(time(NULL)), cannot use on poj(g++)</span>
+<span class="c1">// Remember srand(time(NULL)), but it cannot be used on poj(g++)</span>
 <span class="k">struct</span> <span class="n">Treap</span> <span class="p">{</span> <span class="c1">// val: bst, pri: heap</span>
     <span class="kt">int</span> <span class="n">pri</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">id</span><span class="p">;</span>
     <span class="n">Treap</span> <span class="o">*</span><span class="n">lch</span><span class="p">,</span> <span class="o">*</span><span class="n">rch</span><span class="p">;</span>
     <span class="n">Treap</span><span class="p">()</span> <span class="p">{}</span>
-    <span class="n">Treap</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="o">:</span> <span class="n">pri</span><span class="p">(</span><span class="n">rand</span><span class="p">()),</span> <span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">val</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">lch</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span> <span class="n">rch</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">Treap</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pri</span> <span class="o">=</span> <span class="n">rand</span><span class="p">();</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+        <span class="n">lch</span> <span class="o">=</span> <span class="n">rch</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">};</span>
 
 <span class="kr">inline</span> <span class="kt">int</span> <span class="nf">size</span><span class="p">(</span><span class="n">Treap</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
@@ -337,18 +345,16 @@
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// size(a) will be k</span>
-<span class="c1">// t is unable to use afterwards</span>
-<span class="kt">void</span> <span class="nf">split</span><span class="p">(</span><span class="n">Treap</span><span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="n">Treap</span><span class="o">*&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="n">Treap</span><span class="o">*&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">void</span> <span class="nf">split</span><span class="p">(</span><span class="n">Treap</span><span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="n">Treap</span><span class="o">*&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="n">Treap</span><span class="o">*&amp;</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">lch</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
-        <span class="n">split</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">rch</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="n">size</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">lch</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">rch</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+        <span class="n">split</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">rch</span><span class="p">,</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">rch</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="n">size</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">lch</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
         <span class="n">pull</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">else</span> <span class="p">{</span>
         <span class="n">b</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
-        <span class="n">split</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">lch</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">lch</span><span class="p">);</span>
+        <span class="n">split</span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">lch</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">lch</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
         <span class="n">pull</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -367,8 +373,8 @@
 <span class="c1">// k is 1-based</span>
 <span class="n">Treap</span><span class="o">*</span> <span class="nf">get_kth</span><span class="p">(</span><span class="n">Treap</span><span class="o">*&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">Treap</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="o">*</span><span class="n">d</span><span class="p">;</span>
-    <span class="n">split</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
-    <span class="n">split</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">);</span>
+    <span class="n">split</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">split</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">merge</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">));</span>
     <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
 <span class="p">}</span>
@@ -376,7 +382,7 @@
 <span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="n">Treap</span><span class="o">*&amp;</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">get_rank</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
     <span class="n">Treap</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
-    <span class="n">split</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+    <span class="n">split</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
     <span class="n">pool</span><span class="p">[</span><span class="n">NN</span><span class="p">]</span> <span class="o">=</span> <span class="n">Treap</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
     <span class="n">Treap</span><span class="o">*</span> <span class="n">n</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">pool</span><span class="p">[</span><span class="n">NN</span><span class="o">++</span><span class="p">];</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">merge</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">b</span><span class="p">);</span>
