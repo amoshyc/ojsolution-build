@@ -35,7 +35,7 @@
     <link rel="top" title="amoshyc&#39;s 題解" href="../index.html"/>
         <link rel="up" title="3. POJ" href="poj.html"/>
         <link rel="next" title="[POJ] 3977. Subset" href="p3977.html"/>
-        <link rel="prev" title="[POJ] 3580. SuperMemo" href="p3580.html"/> 
+        <link rel="prev" title="[POJ] 3734. Blocks" href="p3734.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -114,6 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="p3469.html">[POJ] 3469. Dual Core CPU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p3565.html">[POJ] 3565. Ants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="p3580.html">[POJ] 3580. SuperMemo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3734.html">[POJ] 3734. Blocks</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">[POJ] 3735. Training little cats</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#specification">Specification</a></li>
@@ -216,22 +217,133 @@
 <p class="first admonition-title">Note</p>
 <p class="last">矩陣快速冪</p>
 </div>
-<p>假設測資是:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="mi">10</span> <span class="mi">3</span>
-<span class="n">g</span> <span class="mi">1</span>
-<span class="n">e</span> <span class="mi">2</span>
-<span class="n">s</span> <span class="mi">1</span> <span class="mi">2</span>
+<p>設</p>
+<div class="math">
+\[s_i = \text{第 i 隻貓在當前週期擁有的花生數}\]</div>
+<p>考慮測資（已改為 0-based）:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">g</span> <span class="mi">0</span>
+<span class="n">e</span> <span class="mi">1</span>
+<span class="n">s</span> <span class="mi">0</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>假設式子是</p>
+<p>轉移矩陣建立如下。</p>
+<ol class="arabic simple">
+<li>一開始沒有任何操作時，每隻貓的花生數維持原值。</li>
+</ol>
 <div class="math">
-\[\mathbf{A'} = \mathbf{T} \mathbf{A}\]</div>
-<p>轉移矩陣的建立如下。</p>
-<p><code class="docutils literal"><span class="pre">g</span> <span class="pre">1</span></code></p>
+\[\begin{split}\begin{bmatrix}
+s_0' \\
+s_1' \\
+s_2' \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+s_0 \\
+s_1 \\
+s_2 \\
+\end{bmatrix}\end{split}\]</div>
+<p>加入操作 <code class="docutils literal"><span class="pre">g</span> <span class="pre">0</span></code>，即為 <span class="math">\(s_0' = s_0 + 1\)</span>
+因為矩陣沒有 <code class="docutils literal"><span class="pre">1</span></code> ，我們補一個 <code class="docutils literal"><span class="pre">1</span></code> 進去。</p>
 <div class="math">
-\[\]</div>
+\[\begin{split}\begin{bmatrix}
+s_0' \\
+s_1' \\
+s_2' \\
+1 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+s_0 \\
+s_1 \\
+s_2 \\
+1 \\
+\end{bmatrix}\end{split}\]</div>
+<p>加入操作 <code class="docutils literal"><span class="pre">e</span> <span class="pre">1</span></code>，即為 <span class="math">\(s_1' = 0\)</span>
+這個簡單，式子變成：</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}
+s_0' \\
+s_1' \\
+s_2' \\
+1 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+s_0 \\
+s_1 \\
+s_2 \\
+1 \\
+\end{bmatrix}\end{split}\]</div>
+<p>加入操作 <code class="docutils literal"><span class="pre">s</span> <span class="pre">0</span> <span class="pre">1</span></code>，即為:</p>
+<div class="math">
+\[\begin{split}s_0' &amp;= s_1' \\
+s_1' &amp;= s_0' \\\end{split}\]</div>
+<p>注意（因為我們是要交換「當前」的二隻貓的花生數，而不是上個周期的），所以 <strong>不是</strong></p>
+<div class="math">
+\[\begin{split}s_0' &amp;= s_1 \\
+s_1' &amp;= s_0 \\\end{split}\]</div>
+<p>要實現 <code class="docutils literal"><span class="pre">s</span> <span class="pre">0</span> <span class="pre">1</span></code>，我們只需把轉移矩陣的第 <code class="docutils literal"><span class="pre">0</span></code>, 第 <code class="docutils literal"><span class="pre">1</span></code> 個 row 交換即可，所以得到：</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}
+s_0' \\
+s_1' \\
+s_2' \\
+1 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+s_0 \\
+s_1 \\
+s_2 \\
+1 \\
+\end{bmatrix}\end{split}\]</div>
+<p>之後看要做幾個周期，轉移矩陣就是幾次方。而一開始每隻貓的花生數都是 0，所以得到</p>
+<div class="math">
+\[\begin{split}\begin{bmatrix}
+{result}_0 \\
+{result}_1 \\
+{result}_2 \\
+1 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\end{bmatrix}^{k}
+\begin{bmatrix}
+0 \\
+0 \\
+0 \\
+1 \\
+\end{bmatrix}\end{split}\]</div>
 <hr class="docutils" />
-<p>這樣寫會對，但 TLE，只要將矩陣乘法優化即可。
+<p>模板套一套，答案會正確，但 TLE，此時只要將矩陣乘法優化即可。
 原本是</p>
 <div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -448,7 +560,7 @@
         <a href="p3977.html" class="btn btn-neutral float-right" title="[POJ] 3977. Subset" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="p3580.html" class="btn btn-neutral" title="[POJ] 3580. SuperMemo" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="p3734.html" class="btn btn-neutral" title="[POJ] 3734. Blocks" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -458,7 +570,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on Sep 14, 2016.
+      Last updated on Sep 17, 2016.
 
     </p>
   </div>
