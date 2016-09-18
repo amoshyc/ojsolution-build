@@ -34,7 +34,7 @@
   
     <link rel="top" title="amoshyc&#39;s 題解" href="../../index.html"/>
         <link rel="up" title="#369" href="index.html"/>
-        <link rel="next" title="#371" href="../cf371/index.html"/>
+        <link rel="next" title="[cf372] D. Complete The Graph" href="pd.html"/>
         <link rel="prev" title="[cf372] B. Complete the Word" href="pb.html"/> 
 
   
@@ -88,6 +88,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pa.html">[cf372] A. Crazy Computer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pb.html">[cf372] B. Complete the Word</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">[cf372] C. Sonya and Queries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pd.html">[cf372] D. Complete The Graph</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../cf371/index.html">#371</a></li>
@@ -228,7 +229,7 @@
 </div>
 <div class="section" id="ac-code-1-python-3">
 <h2><a class="toc-backref" href="#id8">AC Code 1 (python 3)</a><a class="headerlink" href="#ac-code-1-python-3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python3"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -240,19 +241,19 @@
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">input</span><span class="p">())</span>
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 
 <span class="n">ans</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">ans</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="k">for</span> <span class="n">level</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">:</span>
+<span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
     <span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">level</span> <span class="o">*</span> <span class="p">(</span><span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
-    <span class="n">ans</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="n">num</span><span class="p">)</span> <span class="c1">// level</span>
+    <span class="n">ans</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="n">num</span><span class="p">)</span> <span class="o">//</span> <span class="n">level</span>
     <span class="n">num</span> <span class="o">=</span> <span class="p">(</span><span class="n">level</span> <span class="o">*</span> <span class="p">(</span><span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">:</span>
-    <span class="n">print</span><span class="p">(</span><span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -313,7 +314,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../cf371/index.html" class="btn btn-neutral float-right" title="#371" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pd.html" class="btn btn-neutral float-right" title="[cf372] D. Complete The Graph" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="pb.html" class="btn btn-neutral" title="[cf372] B. Complete the Word" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
