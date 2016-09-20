@@ -262,7 +262,7 @@
 78
 79</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Remember srand(time(NULL)), but it cannot be used on poj(g++)</span>
 <span class="k">struct</span> <span class="n">Treap</span> <span class="p">{</span> <span class="c1">// val: bst, pri: heap</span>
-    <span class="kt">int</span> <span class="n">pri</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">pri</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">val</span><span class="p">;</span>
     <span class="n">Treap</span> <span class="o">*</span><span class="n">lch</span><span class="p">,</span> <span class="o">*</span><span class="n">rch</span><span class="p">;</span>
     <span class="n">Treap</span><span class="p">()</span> <span class="p">{}</span>
     <span class="n">Treap</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
@@ -283,7 +283,7 @@
 <span class="kt">int</span> <span class="n">NN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="n">Treap</span> <span class="n">pool</span><span class="p">[</span><span class="mi">30000</span><span class="p">];</span>
 
-<span class="n">Treap</span><span class="o">*</span> <span class="nf">merge</span><span class="p">(</span><span class="n">Treap</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">Treap</span><span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">Treap</span><span class="o">*</span> <span class="nf">merge</span><span class="p">(</span><span class="n">Treap</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">Treap</span><span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// a &lt; b</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">a</span> <span class="o">||</span> <span class="o">!</span><span class="n">b</span><span class="p">)</span> <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">?</span> <span class="nl">a</span> <span class="p">:</span> <span class="n">b</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">pri</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">pri</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">a</span><span class="o">-&gt;</span><span class="n">rch</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">rch</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
@@ -410,7 +410,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on Sep 18, 2016.
+      Last updated on Sep 20, 2016.
 
     </p>
   </div>
