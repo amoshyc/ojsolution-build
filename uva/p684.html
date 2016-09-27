@@ -184,7 +184,7 @@
 <h2><a class="toc-backref" href="#id7">分析</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">AC 自動機模版題</p>
+<p class="last">高斯消去法</p>
 </div>
 <p>用 Gaussian elimination （不是 Gaussian-Jordan elimination）把矩陣上三角化。
 主對角線的項的乘積即為答案。這題不能用浮點數，所以使用 gcd 的想法改寫 Gaussian elimination。
@@ -247,8 +247,7 @@
 53
 54
 55
-56
-57</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+56</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
 <span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
@@ -269,8 +268,7 @@
             <span class="p">}</span>
 
             <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
-                    <span class="n">swap</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]);</span>
+                <span class="n">swap</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
                 <span class="n">det</span> <span class="o">=</span> <span class="o">-</span><span class="n">det</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
@@ -330,7 +328,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on Sep 21, 2016.
+      Last updated on Sep 27, 2016.
 
     </p>
   </div>
