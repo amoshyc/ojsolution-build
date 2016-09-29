@@ -186,23 +186,7 @@
 </div>
 <div class="section" id="id1">
 <h2><a class="toc-backref" href="#id5">程式碼 1</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">A</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">];</span>
-<span class="kt">int</span> <span class="n">dp</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">];</span> <span class="c1">// dp[i] = 長度為 i + 1 的 LIS 最後一項的最小值</span>
-
-<span class="n">fill</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">INF</span><span class="p">);</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="o">*</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<span class="p">}</span>
-<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="o">*</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">dp</span><span class="p">;</span>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// dp[i] = max(dp[j] | 0 &lt;= j &lt; i) + 1</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -224,13 +208,12 @@
 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="o">*</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 <span class="p">}</span>
-<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="o">*</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">dp</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">lower_bound</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">INF</span><span class="p">)</span> <span class="o">-</span> <span class="n">dp</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
 </div>
 <div class="section" id="id3">
 <h2><a class="toc-backref" href="#id7">模板驗證</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://codepad.org/nEGXuSYA">uva10986</a></p>
 </div>
 </div>
 
@@ -254,7 +237,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on Sep 28, 2016.
+      Last updated on Sep 29, 2016.
 
     </p>
   </div>
