@@ -99,7 +99,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">題目</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#specification">Specification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">分析</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ac-code-1-954ms">AC Code 1 (954ms)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ac-code-1-922ms">AC Code 1 (922ms)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ac-code-2-2125ms">AC Code 2 (2125ms)</a></li>
 </ul>
 </li>
@@ -195,7 +195,7 @@
 <li><a class="reference internal" href="#id2" id="id5">題目</a></li>
 <li><a class="reference internal" href="#specification" id="id6">Specification</a></li>
 <li><a class="reference internal" href="#id3" id="id7">分析</a></li>
-<li><a class="reference internal" href="#ac-code-1-954ms" id="id8">AC Code 1 (954ms)</a></li>
+<li><a class="reference internal" href="#ac-code-1-922ms" id="id8">AC Code 1 (922ms)</a></li>
 <li><a class="reference internal" href="#ac-code-2-2125ms" id="id9">AC Code 2 (2125ms)</a></li>
 </ul>
 </li>
@@ -222,8 +222,8 @@
 以下程式碼為 Hierholzer&#8217;s algorithm，細節見模板。
 第一份 code 為手寫 linked list，第二份為使用 C++ 內建的 list</p>
 </div>
-<div class="section" id="ac-code-1-954ms">
-<h2><a class="toc-backref" href="#id8">AC Code 1 (954ms)</a><a class="headerlink" href="#ac-code-1-954ms" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ac-code-1-922ms">
+<h2><a class="toc-backref" href="#id8">AC Code 1 (922ms)</a><a class="headerlink" href="#ac-code-1-922ms" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -298,13 +298,9 @@
 72
 73
 74
-75
-76
-77
-78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
+75</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;list&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -312,11 +308,27 @@
 <span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_N</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">MAX_M</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">;</span>
 
+<span class="c1">// list</span>
+<span class="k">struct</span> <span class="n">Node</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">nxt</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kt">int</span> <span class="n">NN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">Node</span> <span class="n">pool</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">MAX_M</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span> <span class="c1">// 給定的圖 E 條有向邊，環最大有 E + 1 個節點</span>
+<span class="n">Node</span><span class="o">*</span> <span class="n">root</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+<span class="n">Node</span><span class="o">*</span> <span class="nf">new_node</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Node</span><span class="o">*</span> <span class="n">it</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">pool</span><span class="p">[</span><span class="n">NN</span><span class="o">++</span><span class="p">];</span>
+    <span class="n">it</span><span class="o">-&gt;</span><span class="n">val</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+    <span class="n">it</span><span class="o">-&gt;</span><span class="n">nxt</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">it</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="c1">// graph</span>
-<span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">;</span> <span class="c1">// V, E</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">cycle</span><span class="p">;</span> <span class="c1">// 存找到的（小）歐拉環</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">g</span><span class="p">[</span><span class="n">MAX_N</span><span class="p">];</span>
 
-<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">cycle</span><span class="p">;</span>
 <span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
@@ -326,30 +338,12 @@
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// list</span>
-<span class="k">struct</span> <span class="n">Node</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">data</span><span class="p">;</span>
-    <span class="n">Node</span> <span class="o">*</span><span class="n">nxt</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="kt">int</span> <span class="n">NN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="n">Node</span> <span class="n">pool</span><span class="p">[</span><span class="n">MAX_M</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span> <span class="c1">// 給定的圖 E 條邊，最大的環有 E * 2 + 1 個節點</span>
-<span class="n">Node</span><span class="o">*</span> <span class="n">root</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-
-<span class="n">Node</span><span class="o">*</span> <span class="nf">new_node</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">it</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">pool</span><span class="p">[</span><span class="n">NN</span><span class="o">++</span><span class="p">];</span>
-    <span class="n">it</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
-    <span class="n">it</span><span class="o">-&gt;</span><span class="n">nxt</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">it</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">find_euler_cycle</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">root</span> <span class="o">=</span> <span class="n">new_node</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-
+<span class="kt">void</span> <span class="nf">find_euler_cycle</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">new_node</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">it</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> <span class="n">it</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">nxt</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">].</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">cycle</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
-            <span class="n">dfs</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+            <span class="n">dfs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
 
             <span class="n">Node</span><span class="o">*</span> <span class="n">nxt</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">nxt</span><span class="p">;</span>
             <span class="n">Node</span><span class="o">*</span> <span class="n">pre</span> <span class="o">=</span> <span class="n">it</span><span class="p">;</span>
@@ -371,10 +365,10 @@
         <span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">find_euler_cycle</span><span class="p">();</span>
+    <span class="n">find_euler_cycle</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
     <span class="k">for</span> <span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">it</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> <span class="n">it</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">nxt</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -514,7 +508,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, amoshyc.
-      Last updated on Oct 04, 2016.
+      Last updated on Oct 07, 2016.
 
     </p>
   </div>
